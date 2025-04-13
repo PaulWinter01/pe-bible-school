@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PE Bible School</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f2f4f8; }
+    header, footer { background: #004477; color: white; padding: 1em; text-align: center; }
+    main { padding: 2em; }
+    .quiz-question { margin-bottom: 1.5em; }
+    .quiz-question input[type="text"] { width: 100%; padding: 0.5em; margin-top: 0.5em; }
+    button { background: #007acc; color: white; padding: 0.7em 1.5em; border: none; cursor: pointer; }
+    button:hover { background: #005fa3; }
+    .result { margin-top: 1em; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PE Bible School</h1>
+  </header>
+
+  <main>
+    <h2>Lesson 1: Creation</h2>
+    <p>In the beginning, God created the heavens and the earth...</p>
+
+    <form id="quizForm">
+      <div class="quiz-question">
+        <label>1. What did God create on the first day?</label><br/>
+        <input type="radio" name="q1" value="Light"> Light<br/>
+        <input type="radio" name="q1" value="Sun"> Sun<br/>
+        <input type="radio" name="q1" value="Birds"> Birds
+      </div>
+
+      <div class="quiz-question">
+        <label>2. What did God do on the seventh day?</label><br/>
+        <input type="text" name="q2" placeholder="Your answer..." />
+      </div>
+
+      <button type="button" onclick="submitQuiz()">Submit</button>
+      <div class="result" id="result"></div>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PE Bible School</p>
+  </footer>
+
+  <script>
+    function submitQuiz() {
+      const q1 = document.querySelector("input[name='q1']:checked");
+      const q2 = document.querySelector("input[name='q2']").value.toLowerCase().trim();
+      let score = 0;
+
+      if (q1 && q1.value === "Light") score++;
+      if (q2.includes("rest")) score++;
+
+      document.getElementById("result").textContent = "You scored " + score + " out of 2.";
+    }
+  </script>
+</body>
+</html>
